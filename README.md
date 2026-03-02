@@ -61,7 +61,7 @@ Skill 会**主动引导你输入**这些内容，然后才开始写正文：
 
 ### 你要有的环境
 
-- **Cursor** 或 **Claude Code**（任选其一）。
+- **Claude Code**、**Cursor**、**TRAE**等任选其一（原生支持加载Skill的IDE/CLI Codex软件均可；目前未测试在openclaw的可用性，欢迎反馈）。
 - 愿意填两份配置：作业根路径、课次与必读素材映射（见下方「安装与配置」）。
 - **模型能力**：尽量使用高品质模型。最低不低于 Claude Sonnet 4.5；推荐 Google Gemini 3.1 / GPT 5.2；复杂工程建议使用 Claude Opus 4.6 或 GPT 5.3 Codex Extra High 或更强模型。
 
@@ -85,7 +85,7 @@ Skill 会**主动引导你输入**这些内容，然后才开始写正文：
 
 ### 1. 放置 Skill
 
-本仓库根目录就是 skill 内容（没有 `.cursor` 或 `.claude` 这类父级文件夹）。把**整个仓库根目录下的全部内容**复制到：
+本仓库根目录就是 skill 内容（没有 `.cursor` 或 `.claude` 这类父级文件夹）。先clone这个仓库到本地，然后把**整个仓库根目录下的全部内容**复制到【或者使用CLI/IDE的导入功能；或者把项目地址发给AI，请AI代劳】：
 
 - **Cursor**：`你的项目/.cursor/skills/homework-coach/`
 - **Claude Code**：`你的项目/.claude/skills/homework-coach/`
@@ -97,9 +97,8 @@ Skill 会**主动引导你输入**这些内容，然后才开始写正文：
 在 skill 目录下：
 
 - 编辑 `configs/project-homework.md`：填你的**作业根目录**路径，以及下面的输入目录、文风目录、输出目录（或用默认结构）。
-- 编辑 `configs/lesson-map.md`：填**课次和每课要读的素材**（作业要求、笔记、项目路径等）。
+- 编辑 `configs/lesson-map.md`：填**课次和每课要读的素材**（作业要求、笔记、项目路径等）（此项可提供文件路径，让AI代劳）
 
-若 `lesson-map.md` 里用了项目别名（如 `AB/`），再在 `configs/` 下增加对应的 `project-ab.md`（可从 `configs/project-template.example.md` 复制）。
 
 ### 3. 把资料放到约定位置
 
@@ -107,7 +106,7 @@ Skill 会**主动引导你输入**这些内容，然后才开始写正文：
 
 ### 4. 触发 Skill
 
-在 Cursor 或 Claude Code 里说一句「开始第 1 课作业」或「帮我做第 2 课作业」。阶段 00 会先自检配置，缺什么会提示你怎么补。
+在你配置的支持Skill功能软件/界面的对话框里说一句「开始第 1 课作业」或「帮我做第 2 课作业」。阶段 00 会先自检配置，缺什么会提示你怎么补。
 
 ---
 
@@ -132,7 +131,7 @@ Skill 会**主动引导你输入**这些内容，然后才开始写正文：
   确认作业题目、建议、草稿等已放到你在配置里写的「输入目录」和「文风参考目录」。
 
 - **「写出来的不像我」**  
-  规划阶段（01）里 AI 会问你核心观点、感受、细节、作品北极星；认真回答，原话会进正文。若跳过了或答得很空，就容易像模板。
+  确保你在 ai-learn\HistoricalArticles 填入了历史参考文件，有这些文件AI才能学习你的文风。规划阶段（01）里 AI 会问你核心观点、感受、细节、作品北极星；认真回答，原话会进正文。若跳过了或答得很空，就容易像模板。
 
 - **「提示别名缺少 project-xxx.md」**  
   在 `lesson-map.md` 里用了某个项目别名（如 `AB/`），就要在 `configs/` 下有一个 `project-ab.md`，可从 `configs/project-template.example.md` 复制后改。
